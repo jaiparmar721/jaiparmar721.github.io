@@ -14,9 +14,10 @@
 			display: block;
 			position: absolute;
 			top: 100px;
-			left:0px;  /* <--- Change me! */
+			left:400px;px;  /* <--- Change me! */
 		}
 		.board{
+			background-image: url();
 			height: 100vh;
 		}
 	</style>
@@ -39,7 +40,7 @@
 			var box = jQuery('.box');	// reference to the HTML .box element
 			var board = jQuery('.board');	// reference to the HTML .board element
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
-
+			var boardHeight = jQuery(window).height();
 			// Every 50 milliseconds, call the update Function (see below)
 			setInterval(update, 50);
 			
@@ -73,6 +74,7 @@
 			turn it around! 
 			*/
 			function update() {
+				
 				moveBoxTo(positionX, positionY);
 				positionX = positionX + speed;
 				positionY = positionY + speedY;
@@ -80,6 +82,7 @@
 				if (positionX > boardWidth - 70){
 					speed = -speed;
 				}
+				
 				else if (positionX < 0){
 					speed = -speed;
 				}
@@ -88,6 +91,7 @@
 				if (positionY > boardHeight - 70){
 					speedY = -speedY;
 				}
+				
 				else if (positionY < 0){
 					speedY = -speedY;
 				}
@@ -102,14 +106,16 @@
 				positionX = 0;
 				positionY = 0;
 				points += 1;
-				changeBoxText(points);
-			if (speed > 0) {
-				speed = speed +3;
 				
-			}
-			else {
-				speed = speed -3;
-			}
+				changeBoxText(points);
+				if (speed > 0) {
+					speed = speed +3;
+					
+				}
+				else {
+					speed = speed -3;
+				}
+
 			};
 		})();
 	</script>
