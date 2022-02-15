@@ -35,7 +35,11 @@ var init = function (window) {
        for (var i = 0; i < 100; i++){
             drawCircle();
        }
-        
+        drawCircle(); // set up a function to draw 5 circles
+        drawCircle();
+        drawCircle();
+        drawCircle();
+        drawCircle();
 
         ////////////////////////////////////////////////////////////
         ///////////////// PROGRAM LOGIC ////////////////////////////
@@ -59,7 +63,7 @@ var init = function (window) {
             game.checkCirclePosition(circles [1]);
             game.checkCirclePosition(circles [2]);
             game.checkCirclePosition(circles [3]);
-            game.checkCirclePosition(circles [4]);
+            game.checkCirclePosition(circles [4]); // keeps circles that stray off of the screen on the screen.
 
             // TODO 9 : Iterate over the array
            for (var k = 0; k <= circles.length -1; k++) {
@@ -67,7 +71,7 @@ var init = function (window) {
                 game.checkCirclePosition(circles [k]);
             
             }
-        }               
+        }               // Iterating circles in arrays that let us pull out on each loop.
         /* 
         This Function should check the position of a circle that is passed to the 
         Function. If that circle drifts off the screen, this Function should move
