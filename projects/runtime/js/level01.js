@@ -50,10 +50,10 @@ var level01 = function (window) {
             //sawBladeHitZone.rotationalVelocity = 5;    
             obstacleImage.scaleX = 0.2; // control the size of the obstacle
             obstacleImage.scaleY = 0.2; // controls the geight of the obstacle
-        };
+        }
         
         function createEnemy(x,y){
-           var enemy = game.createGameItem('enemy' ,25); // creating the game item and storing it in the 
+           var enemy = game.createGameItem('enemy' ,25); // creating the game item and storing it in the var enemy
            var redSquare = draw.rect(50,50, 'red'); // creates rect and stores as redSquare
            var redSquare = draw.bitmap('img/Jaguar.png')
            redSquare.x = -25; // x pos of the hitzone in reference in Images' x
@@ -73,13 +73,13 @@ var level01 = function (window) {
            enemy.velocityX = -1; // causes the enemy to move 1 pixel to left on the x pos
 
 
-           enemy.onPlayerCollision = function(){ // detects if teh player has collided with the
+           enemy.onPlayerCollision = function(){ // detects if the player has collided with the enemy
                console.log('The enemy has hit Halle');
                game.changeIntegrity(-20); // takes away health from the enemy
             };
         
        
-           enemy.onProjectileCollision = function(){ // detects if projectile is colliding with
+           enemy.onProjectileCollision = function(){ // detects if projectile is colliding with enemy
                console.log('The projectile hit the Halle');
                game.changeIntegrity(5); // adds health if projectile collides with enemy 
                game.increaseScore(100); // increases score if teh projecile collides with enemy
@@ -88,11 +88,11 @@ var level01 = function (window) {
 
         }
         function createReward(x,y){
-            var reward = game.createGameItem('reward',60); // creating the game isn't and storing it in the variable reward.
+            var reward = game.createGameItem('reward',60); // creating the game isn't and storing it in the variable reward
             var blueSquare = draw.bitmap('img/Bananas.png'); // creates rectangle and stores as blueSquare
-            blueSquare.x = -25;
-            blueSquare.y = -25;
-            reward.addChild(blueSquare); // add the blue square to the reward game item
+            blueSquare.x = -25; // controls the x value of the reward
+            blueSquare.y = -25; // controls the x value of the reward
+            reward.addChild(blueSquare); // add the blueSquare to the reward game item
             
             reward.scaleX = 0.2; // control the size of the reward
             reward.scaleY = 0.2; // changes the height of the reward
@@ -105,30 +105,30 @@ var level01 = function (window) {
             reward.velocityX = -1; // this causes the reward to move one pixel to the left on the x position
             //reward.rotationalVelocity.x = 5;
 
-            reward.onPlayerCollision = function() {
+            reward.onPlayerCollision = function() { // detects if the player has collided with enemy
                 console.log('The reward has hit Halle');
-                game.changeIntegrity(10);
+                game.changeIntegrity(10); // adds health if projectile colides with enemy
             };    
 
-            reward.onProjectileCollision = function() {
+            reward.onProjectileCollision = function() { // detects if the player has collided with enemy
                 console.log('The projectile has hit the reward');
-                game.changeIntegrity(5);
-                game.increaseScore(10);
-                reward.fadeOut();
+                game.changeIntegrity(5); // adds health if projectile collides with enemy 
+                game.increaseScore(10); // increase score if the projectile collides with enemy 
+                reward.fadeOut(); // makes the enemy disappear if hit
             };    
          }
 
 
-        for (var i = 0; i < levelData.gameItems.length; i++){
+        for (var i = 0; i < levelData.gameItems.length; i++){ // the for loop is used to interate the sawblade, enemy, and the reward
             var gameItem = levelData.gameItems[i];
 
-            if (gameItem.type === 'sawblade'){
+            if (gameItem.type === 'sawblade'){ // if saw blade is called run SawBlade function
                 createSawBlade(gameItem.x, gameItem.y);
             }
-            if (gameItem.type === 'enemy'){
+            if (gameItem.type === 'enemy'){ // if the enemy is called then run the enemy function
                 createEnemy(gameItem.x, gameItem.y);
             }
-            if (gameItem.type === 'reward'){
+            if (gameItem.type === 'reward'){ // if the reward is called then run reward statement
                 createReward(gameItem.x, gameItem.y);
             }
         }

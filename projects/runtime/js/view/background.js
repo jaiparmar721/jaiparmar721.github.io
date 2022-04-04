@@ -36,17 +36,17 @@ var background = function (window) {
             // TODO: 2 - Part 2
             // this fills the background with a obnoxious yellow
             // you should modify this to suit your game
-            var backgroundFill = draw.rect(canvasWidth,canvasHeight,'yellow');
+            var backgroundFill = draw.rect(canvasWidth,canvasHeight,'green');
             background.addChild(backgroundFill);
             
             // TODO: 3 - Add a moon and starfield
             var moon = draw.bitmap('img/moon.png'); // created a var called moon. draw.bitmap draws the mooon adn stores it in the variable
-                moon.x = - 300; // control the left and right of the postion of the moon
-                moon.y = - 450; // controls the up and down position of the moon
+                moon.x = canvasWidth - 300; // control the left and right of the postion of the moon
+                moon.y = groundY - 450; // controls the up and down position of the moon
                 moon.scaleX = 0.5; // changes the x scale of the moon
                 moon.scaleY = 0.5; // changes the y scale of the moon
                 background.addChild(moon); // adds the moon to the background
-            }
+            
             
                 // everything this loop runs it creats a circle with a randome x and y respective to teh canvas and add to the 
                 for(var i = 0; i <= 100; i++){
@@ -65,10 +65,19 @@ var background = function (window) {
                 buildings.push(building); // pushes each induvidual building for the building array 
             }
             // TODO 4: Part 1 - Add a tree
-            tree = draw.bitmap("img/tree.png");
-            tree.x = 0;
-            tree.y = 0;
-            background.addChild(tree);
+           /*tree = draw.bitmap('img/tree.png'); // reassigns the drawn image tree to the variable tree
+            tree.x = 600; //assigns an X value to the tree // assigns an X vallue to the tree
+            tree.y = groundY - 100; // assigns an = Y value to the tree
+             tree.scaleX = 0.5; // changes the x scale of the moons
+             tree.scaleY = 0.5; // changes y scale of the moon
+             background.addChild(tree); // adds tree to the backgound
+             */
+                tree = draw.bitmap("img/tree.png"); // reassigns the drawn image tree to the variable tree
+                tree.x = 600; // assigns an X value to the tree
+                tree.y = groundY - 150; // assigns an = Y value to the tree
+                tree.scaleX = 0.4; // changes the x scale of the moons
+                tree.scaleY = 0.2; // changes y scale of the moon
+                background.addChild(tree); // adds tree to the background
             
         } // end of render function - DO NOT DELETE
         
@@ -82,18 +91,24 @@ var background = function (window) {
             var groundY = ground.y;
             
             // TODO 4: Part 2 - Move the tree!
-            tree.x = tree.x + 1 // taking the value of tree
+            /* tree.x = tree.x - 1 // taking the value of tree.x (x pos) and decreasing by 1 pixel of every time the updatefunction runs
 
             if(tree.x < -200){
                 tree.x = canvasWidth;
             }
-            
+            */
+
+            tree.x = tree -1;
+
+            if (tree.x < -200){
+                tree.x = canvasWidth
+            }
+
+
+
             // TODO 5: Part 2 - Parallax
-           
-            // loops the buildings and moves them to the left by 0.5 pixels
-            
            for (var i = 0; i < buildings.length; i++){
-                buildings[i].x - 0.5; //moves the building's x position by .5 pixels
+                buildings[i].x = building[i].x- 0.5; // moves the building's x position by .5 pixels
                 if(buildings[i].x < 0){ // checks to see if the building's x pos is off the left side and if it is it resets the right side.
                     buildings[i].x = canvasWidth;
                 }
@@ -116,7 +131,8 @@ var background = function (window) {
         render();
         return background;
     };
-};
+
+}; // TODO: 3 - Add a moon and starfield
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if((typeof process !== 'undefined') &&
