@@ -65,7 +65,10 @@ var background = function (window) {
                 buildings.push(building); // pushes each induvidual building for the building array 
             }
             // TODO 4: Part 1 - Add a tree
-            
+            tree = draw.bitmap("img/tree.png");
+            tree.x = 0;
+            tree.y = 0;
+            background.addChild(tree);
             
         } // end of render function - DO NOT DELETE
         
@@ -84,6 +87,7 @@ var background = function (window) {
             if(tree.x < -200){
                 tree.x = canvasWidth;
             }
+            
             // TODO 5: Part 2 - Parallax
            
             // loops the buildings and moves them to the left by 0.5 pixels
